@@ -28,3 +28,15 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Create build directory
+      run: mkdir -p build
+
+    - name: Copy test results to build directory
+      run: cp -r tests build/tests
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifact
+        path: build/
+
